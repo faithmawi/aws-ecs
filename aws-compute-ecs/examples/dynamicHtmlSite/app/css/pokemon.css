@@ -1,0 +1,15 @@
+h1 {
+    color: purple
+}
+
+#listHolder {
+    border: 1px solid black
+}
+
+.pokemon-image {
+    height: 100px;
+}
+
+.pokemon-entry {
+    text-transform: capitalize;
+}

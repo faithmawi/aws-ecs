@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    image: ${AWS_ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com/academy-2020-high-scores-app:latest
+    ports:
+        - "80:80"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: academy-2020-high-scores
+        awslogs-region: eu-west-1
+        awslogs-stream-prefix: app
+  api:
+    image: ${AWS_ACCOUNT}.dkr.ecr.eu-west-1.amazonaws.com/academy-2020-high-scores-api:latest
+    ports:
+        - "8080:8080"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: academy-2020-high-scores
+        awslogs-region: eu-west-1
+        awslogs-stream-prefix: api
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    ports:
+        - "8000:8000"
+    command: -jar DynamoDBLocal.jar -sharedDb
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: academy-2020-high-scores
+        awslogs-region: eu-west-1
+        awslogs-stream-prefix: dynamodb

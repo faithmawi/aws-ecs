@@ -1,0 +1,14 @@
+# This file is a pre-cooked sample for the ECS session
+# This file is for use with local docker-compose
+---
+version: "3"
+
+services:
+  dynamic-app:
+    image: pokemon-dynamic-app:latest
+    container_name: pokemon-dynamic-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
